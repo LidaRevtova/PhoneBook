@@ -15,7 +15,7 @@ public class Main {
         PhoneBook book = new PhoneBook();
         ArrayList<Record> records = new ArrayList<Record>();
         records.add(new Record(1, "8 999 111 22 33", "Inna"));
-        records.add(new Record(1, "8 999 111 22 33", "Inna"));
+        records.add(new Record(2, "8 999 111 22 33", "Inna"));
         records.add(new Record(3, "8 999 111 44 33", "Masha"));
 //        records.add(new Record(4, "8 999 111 55 33", "Pasha"));
 //        records.add(new Record(5, "8 999 111 44 63", "Dasha"));
@@ -23,6 +23,7 @@ public class Main {
 
         for (Record record : records){
             try {
+                book.createRecord(record);
                 book.createRecord(record);
             }
             catch (PhoneNumberExists e){

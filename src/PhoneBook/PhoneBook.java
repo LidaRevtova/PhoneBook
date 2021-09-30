@@ -12,8 +12,7 @@ public class PhoneBook {
     private List<Record> phoneBook = new ArrayList<Record>();
 
     public void createRecord(Record record) throws PhoneNumberExists {
-
-        if (phoneBook.contains(record.getPhoneNumber())) {
+        if (phoneBook.contains(record)) {
             throw new PhoneNumberExists("Запись с таким телефоном уже существует");
         } else {
             phoneBook.add(record);
