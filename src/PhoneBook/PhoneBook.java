@@ -36,17 +36,25 @@ public class PhoneBook {
         if (!hasRecord(record.getId())) {
             throw new RecordNotFound("Запись с таким id не найдена.");
         }
-
-        if(record.getName().isEmpty() || record.getPhoneNumber().isEmpty() || record.getName() == null || record.getPhoneNumber() == null){
+        if(record.getName() == null || record.getPhoneNumber() == null || record.getName().isEmpty() || record.getPhoneNumber().isEmpty()){
             throw new RecordNotValid("Телефон или имя пустые");
         }
+        int i = findId(record.getId());
+        if (i == -1){
+            throw new RecordNotFound("not found");
+        } else {
+            phoneBook.set(i, record);
+        }
 
-        deleteRecord(record.getId());
-//        try {
-//            createRecord(record);
-//        } catch (PhoneNumberExists e){
-//            System.out.println("Хоть я и уверен, что это исключение не отработает, но я вынужден его обработать!");
-//        }
+    }
+
+    private int findId(long id) {
+        for (int i = 0; i < phoneBook.size(); i++) {
+            if (phoneBook.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void deleteRecord(long id) throws RecordNotFound {

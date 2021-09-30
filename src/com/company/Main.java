@@ -34,27 +34,19 @@ public class Main {
 
         System.out.println("");
 
-        Record recordUpdate = new Record(1, "", "");
+        Record recordUpdate = new Record(1, "666", "55");
         try {
             book.updateRecord(recordUpdate);
-        }
-        catch (RecordNotFound e){
-            System.out.println(e);
         }
         catch (RecordNotValid e){
             System.out.println(e);
         }
-        //book.printInfo();
+        book.printInfo();
         System.out.println("");
 
 
         long idDel = 7;
-        try {
-            book.deleteRecord(idDel);
-        }
-        catch (RecordNotFound e){
-            System.out.println(e);
-        }
+        book.deleteRecord(idDel);
         //book.printInfo();
 
     }
